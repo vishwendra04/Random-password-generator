@@ -50,11 +50,13 @@ h1 {
 .copymessage {
   font-size: 0.75rem;
   color: var(--vb-cyan);
+  opacity: 0;  /* Initially hidden */
 }
 
 .copymessage.active {
-  display: inline;
+  opacity: 1;  /* Visible when active class is added */
 }
+
 
 
 /* Note Container */
