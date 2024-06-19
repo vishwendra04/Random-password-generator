@@ -140,15 +140,21 @@ function updatePasswordLength() {
 
 async function copyContent() {
   try {
-    await navigator.clipboard.writeText(passwordDisplay.value);
-    copyMsg.innerText = "Copied!";
-  } catch (err) {
-    console.error("Failed to copy: ", err);
-    copyMsg.innerText = "Failed to copy!";
+    if (password === "") {
+      alert('First generate a password to copy.');
+      return;
+    }
+
+    await navigator.clipboard.writeText(password);
+    copyMsg.innerText = "Copied";
+  } catch (error) {
+    copyMsg.innerText = "Copy failed";
   }
+
   copyMsg.classList.add("active");
   setTimeout(() => {
     copyMsg.classList.remove("active");
+    copyMsg.innerText = ""; // Reset text after hiding
   }, 2000);
 }
 
